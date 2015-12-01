@@ -1,0 +1,36 @@
+---
+layout: default
+mainbg: true
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Latest Posts</h1>
+
+  <ul class="post-list">
+      {% for post in site.posts limit:6 %}
+
+      <li class="post-item">
+        <span class="post-meta">{{ post.date | date: "%b %-d" }}:</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}"><span>{{ post.title }}</span></a>
+        </h2>
+
+          {% if forloop.first %}
+
+          <img src="{{ post.image }}" />
+
+          <p><span class="post-excerpt">{{ post.excerpt | remove: '<p>' | remove:'</p>' }}</span></p>
+
+          {% endif %}
+
+
+      </li>
+
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>

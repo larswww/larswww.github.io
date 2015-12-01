@@ -1,0 +1,24 @@
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
+
+
+    <!-- http://milanaryal.com/2015/integrating-social-meta-tags-into-jekyll/  -->
+    <meta property="og:title" content="{% if post.title %}{{ post.title }}{% else %}{{ site.name }}{% endif %}">
+    <meta property="og:type" content="{% if post.date %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ post.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <meta property="og:image" content="{% if post.image %}{{ post.image | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.icon | prepend: site.baseurl | prepend: site.url }}{% endif %}">
+    <meta property="og:description" content="{% if post.excerpt %}{{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:locale" content="{{ site.locale }}">
+
+
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" />
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+    <link type="text/plain" rel="author" href="{{ "/humans.txt" | prepend: site.baseurl }}" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
